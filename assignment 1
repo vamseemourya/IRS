@@ -1,1 +1,20 @@
+#---Bag Of Words---
 
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+document = ['I am a boy','My gender is Male']
+vectorizer = CountVectorizer()
+matrix = vectorizer.fit_transform(document)
+print(matrix.toarray())
+difference = cosine_similarity(matrix[0],matrix[1])
+print(difference[0][0])
+
+#---TF IDF---
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrixs.pairwise import cosine_similarity
+data = ['I am a boy', 'My gender is Male']
+vertorizer = TfidfVectorizer()
+matrix_two = vectorizer.fit_transform(data)
+print(matrix_two.toarray())
+difference_two = cosine_similarity(matrix_two[0],matrix_two[1])
+print(difference_two[0][0])
