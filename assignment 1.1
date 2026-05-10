@@ -1,0 +1,18 @@
+import math
+s1 = 'I am a boy'
+s2 = 'I am a male student'
+words1 = s1.lower().split()
+words2 = s2.lower().split()
+vocab = sorted(list(set(words1 + words2)))
+v1 = [words1.count(i) for i in vocab]
+v2 = [words2.count(i) for i in vocab]
+print(v1)
+print(v2)
+dp = sum(vec1 * vec2 for vec1, vec2 in zip(v1, v2))
+mag1 = math.sqrt(sum(vec ** 2 for vec in v1))
+mag2 = math.sqrt(sum(vec ** 2 for vec in v2))
+if mag1 == 0 or mag2 == 0:
+    cosine_similarity = 0.0
+else:
+    cosine_similarity = dp / (mag1 * mag2)
+print(cosine_similarity)
