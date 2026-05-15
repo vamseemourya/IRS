@@ -1,0 +1,13 @@
+from sentence_transformers import SentenceTransformer, util
+data = ['I am a boy','My gender is male','I am a man']
+model = SentenceTransformer('all-MiniLM-L6-v2', trust_remote_code=True)
+nomic_sentences = [s for s in data]
+nomic_embeddings = model.encode(nomic_sentences)
+cosine_similarity = util.cos_sim(nomic_embeddings[0], nomic_embeddings[1])
+print(cosine_similarity)
+
+mxbai_model = SentenceTransformer('mixedbread-ai/mxbai-embed-large-v1', trust_remote_code=True)
+
+mxbai_embeddings = mxbai_model.encode(data)
+cosine_similarity_mxbai = util.cos_sim(mxbai_embeddings[0], mxbai_embeddings[1])
+print(cosine_similarity_mxbai)
